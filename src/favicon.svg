@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SNILS Generator">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d2a35"/>
+      <stop offset="1" stop-color="#4f84ad"/>
+    </linearGradient>
+    <linearGradient id="card" x1="12" y1="12" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5e94be"/>
+      <stop offset="1" stop-color="#3f6f90"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#bg)"/>
+  <rect x="10" y="10" width="44" height="44" rx="10" fill="url(#card)"/>
+
+  <rect x="16" y="18" width="30" height="4" rx="2" fill="#eef5fb"/>
+  <rect x="16" y="26" width="30" height="4" rx="2" fill="#ddebf7"/>
+  <rect x="16" y="34" width="24" height="4" rx="2" fill="#a7c7de"/>
+
+  <circle cx="45" cy="45" r="10" fill="#eef5fb"/>
+  <path d="M40 45l3.3 3.3L50 41.6" fill="none" stroke="#3f6f90" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8"/>
+</svg>

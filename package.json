@@ -1,0 +1,9 @@
+{
+  "name": "snils-generator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ./scripts/render-template.mjs"
+  }
+}
