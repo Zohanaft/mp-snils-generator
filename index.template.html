@@ -97,9 +97,7 @@
           <div class="mt-6">
             <label for="with-separator" class="inline-flex cursor-pointer items-center gap-3">
               <input id="with-separator" type="checkbox" class="peer sr-only">
-              <span class="relative h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-brand-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-brand-500 peer-focus:ring-offset-2">
-                <span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
-              </span>
+              <span class="relative h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-brand-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-brand-500 peer-focus:ring-offset-2 after:absolute after:left-1 after:top-1 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform after:content-[''] peer-checked:after:translate-x-3"></span>
               <span class="text-sm text-slate-700">Использовать разделители (XXX-XXX-XXX YY)</span>
             </label>
           </div>
@@ -110,7 +108,7 @@
 
           <!-- РСЯ: тип «Баннер» — https://yandex.ru/support/partner/ru/web/units/types/ В кабинете: размер «Адаптивный», контейнер задаётся здесь (рекомендации: https://yandex.ru/support/partner/ru/web/units/sizes). Вставьте код блока; renderTo должен указывать на #yandex_rtb_sidebar (или замените id в контейнере на свой из кабинета). -->
           <aside id="partner-sidebar-slot" class="partner-slot yandex-widget mt-6 rounded-xl border border-slate-200 bg-slate-50 p-3" aria-label="Реклама Яндекс РСЯ, баннер">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-600">Реклама</p>
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400">Реклама</p>
             <div
               id="yandex_rtb_sidebar"
               class="yandex-widget__container mx-auto mt-2 w-full max-w-[300px] bg-white"
@@ -196,7 +194,7 @@
     <section class="mx-auto w-full max-w-6xl px-4 pb-10">
       <!-- РСЯ: тип «Баннер», горизонтальный контейнер под форматы вроде 728×90 / 100%×90 (см. размеры в документации РСЯ). -->
       <aside id="partner-before-faq-slot" class="partner-slot yandex-widget rounded-xl border border-slate-200 bg-slate-50 p-3" aria-label="Реклама Яндекс РСЯ, баннер">
-        <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-600">Реклама</p>
+        <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400">Реклама</p>
         <div
           id="yandex_rtb_horizontal"
           class="yandex-widget__container mt-2 w-full bg-white"
