@@ -111,7 +111,13 @@ renderTemplate(
   replacements
 );
 
+renderTemplate(
+  path.join(projectRoot, "sitemap.template.xml"),
+  path.join(publicDir, "sitemap.xml"),
+  replacements
+);
+
 fs.copyFileSync(path.join(sourceDir, "tailwind.css"), path.join(publicDir, "tailwind.css"));
 fs.copyFileSync(path.join(sourceDir, "favicon.svg"), path.join(publicDir, "favicon.svg"));
 
-console.log("Templates rendered to /public: index.html, robots.txt, tailwind.css, favicon.svg");
+console.log("Templates rendered to /public: index.html, robots.txt, sitemap.xml, tailwind.css, favicon.svg");
