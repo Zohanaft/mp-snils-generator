@@ -74,6 +74,16 @@ function renderTemplate(templatePath, outputPath, replacements) {
   fs.writeFileSync(outputPath, output, "utf8");
 }
 
+function copyRootHtmlFilesToPublic(excludedNames = new Set()) {
+  const entries = fs.readdirSync(projectRoot, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
+    if (!entry.name.endsWith(".html")) continue;
+    if (excludedNames.has(entry.name)) continue;
+    fs.copyFileSync(path.join(projectRoot, entry.name), path.join(publicDir, entry.name));
+  }
+}
+
 const exampleEnv = parseEnvFile(fallbackEnvPath);
 const fileEnv = parseEnvFile(envPath);
 const env = { ...exampleEnv, ...fileEnv };
@@ -119,5 +129,6 @@ renderTemplate(
 
 fs.copyFileSync(path.join(sourceDir, "tailwind.css"), path.join(publicDir, "tailwind.css"));
 fs.copyFileSync(path.join(sourceDir, "favicon.svg"), path.join(publicDir, "favicon.svg"));
+copyRootHtmlFilesToPublic(new Set(["index.template.html"]));
 
-console.log("Templates rendered to /public: index.html, robots.txt, sitemap.xml, tailwind.css, favicon.svg");
+console.log("Templates rendered to /public: index.html, robots.txt, sitemap.xml, tailwind.css, favicon.svg, extra root html files");
