@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор СНИЛС онлайн — создать валидный номер для тестирования</title>
+  <meta name="description" content="Генератор валидных номеров СНИЛС онлайн для QA, разработки и автотестов. Массовая генерация, формат с разделителями и копирование одним кликом.">
+  <meta name="keywords" content="генератор снилс, генератор снилс онлайн, генератор снилс физического, генератор снилс физического лица, генератор снилс и инн, генератор случайных снилс, генератор валидных снилс, генератор номера снилс, генератор снилс физического лица онлайн, онлайн генератором снилс в поиске браузера, генератор инн и снилс физического лица, генератор паспортных данных и снилс, генератор снилс физ лица, рандом снилс генератор, генератор случайных чисел снилс, генератор снилс и инн онлайн, генератор случайных валидных значений снилс">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Генератор СНИЛС онлайн">
+  <meta property="og:description" content="Быстрый генератор валидных СНИЛС для тестирования интеграций, форм и бизнес-логики.">
+  <meta property="og:site_name" content="SNILS Generator">
+  <meta property="og:url" content="__SITE_URL__">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Генератор СНИЛС онлайн">
+  <meta name="twitter:description" content="Генерируйте валидные номера СНИЛС для тестовых задач.">
+  <link rel="canonical" href="__SITE_URL__">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  __YANDEX_METRIKA_HEAD__
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Генератор СНИЛС онлайн",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "description": "Онлайн-инструмент для генерации валидных номеров СНИЛС для тестирования.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "inLanguage": "ru",
+      "url": "__SITE_URL__"
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900">
+  __YANDEX_METRIKA_NOSCRIPT__
+  <header class="border-b border-brand-100 bg-brand-100/70">
+    <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
+      <a href="/" class="text-xl font-bold text-brand-900">SNILS<span class="text-brand-600"> Generator</span></a>
+      <nav aria-label="Основная навигация">
+        <ul class="flex items-center gap-6 text-sm font-medium text-slate-700">
+          <li><a class="transition hover:text-brand-700" href="#generator">Генератор</a></li>
+          <li><a class="transition hover:text-brand-700" href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="snils-app">
+    <section class="mx-auto w-full max-w-6xl px-4 py-12">
+      <div class="mb-8">
+        <h1 class="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          Генератор <span class="text-brand-600">СНИЛС</span>
+        </h1>
+        <p class="mt-3 max-w-2xl text-slate-600">
+          Инструмент для генерации валидных номеров СНИЛС с корректным контрольным числом.
+        </p>
+      </div>
+
+      <div id="generator" class="grid gap-6 lg:grid-cols-[380px_1fr]">
+        <section id="settings-panel" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="settings-title">
+          <h2 id="settings-title" class="text-2xl font-semibold text-slate-900">Настройки</h2>
+
+          <div class="mt-6">
+            <label for="count" class="mb-2 block text-sm font-medium text-slate-700">
+              Количество: <span class="font-semibold text-brand-700">{{ count }}</span>
+            </label>
+            <input id="count" v-model.number="count" type="range" min="1" max="50" class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-brand-600">
+          </div>
+
+          <div class="mt-6">
+            <label :class="withSeparator ? 'border-brand-700 text-brand-700' : 'border-slate-300 text-slate-900'" class="flex w-full cursor-pointer items-start gap-3 rounded-xl border-2 px-3 py-2 text-sm transition hover:border-brand-500">
+              <input id="with-separator" v-model="withSeparator" type="checkbox" class="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded-md border-2 border-current bg-transparent text-current focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
+              <span>Использовать разделители (XXX-XXX-XXX YY)</span>
+            </label>
+          </div>
+
+          <button type="button" @click="generateList" class="mt-6 w-full cursor-pointer bg-slate-900 text-white rounded-lg px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-0">
+            Сгенерировать
+          </button>
+
+          <aside class="mt-6" aria-label="Баннерный блок">
+            <div id="yandex_rtb_sidebar" class="mx-auto w-full max-w-[300px]" style="min-height: 100px; height: 300px; max-height: 300px;"></div>
+          </aside>
+        </section>
+
+        <section id="result-panel" class="flex min-h-0 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:max-h-[618px]" aria-labelledby="result-title">
+          <div class="flex flex-shrink-0 flex-wrap items-center justify-between gap-3">
+            <h2 id="result-title" class="text-2xl font-semibold text-slate-900">Результат</h2>
+            <button type="button" @click="copyAll" class="cursor-pointer bg-slate-900 text-white rounded-lg px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-0">
+              {{ copiedField === "all" ? "Скопировано" : "Скопировать все" }}
+            </button>
+          </div>
+
+          <p class="mt-2 flex-shrink-0 text-sm text-slate-500">Ниже выводятся валидные значения СНИЛС для тестовых сценариев. У каждого значения есть отдельная кнопка копирования.</p>
+
+          <div class="mt-4 flex flex-col min-h-48 min-w-0 flex-1 overflow-y-auto rounded-xl border border-slate-200 bg-slate-50 p-3 lg:min-h-0 justify-start gap-y-3" aria-live="polite" aria-label="Сгенерированные номера СНИЛС">
+            <p v-if="!generatedSnils.length" class="rounded-lg border border-dashed border-slate-300 bg-white p-3 text-sm text-slate-500">Пока нет данных для вывода.</p>
+            <article v-for="(snils, idx) in generatedSnils" :key="snils + idx" class="h-fit w-full flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-3">
+              <span class="font-mono text-sm text-slate-800">{{ formatSnils(snils) }}</span>
+              <button type="button" @click="copyOne(idx)" class="cursor-pointer bg-slate-900 text-white rounded-lg px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-0">
+                {{ copiedField === `one-${idx}` ? "Скопировано" : "Копировать" }}
+              </button>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="mx-auto w-full max-w-6xl px-4 pb-10">
+      <aside class="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-900" aria-label="Юридическое предупреждение">
+        <h2 class="text-lg font-semibold">Важно</h2>
+        <p class="mt-2 text-sm leading-6">
+          Данные, сгенерированные на этой странице, могут быть использованы только для тестирования, обучения и отладки программного обеспечения.
+          Использование в реальных юридически значимых процессах запрещено.
+        </p>
+      </aside>
+    </section>
+
+    <section class="mx-auto w-full max-w-6xl px-4 pb-10">
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold text-slate-900">Генератор валидных тестовых СНИЛС</h2>
+        <p class="mt-4 text-sm leading-7 text-slate-700">
+          Генератор валидных тестовых СНИЛС — это удобный инструмент для тестирования и проверки СНИЛС.
+          Он позволяет создавать уникальные и валидные номера, которые можно использовать для различных целей,
+          таких как тестирование систем и программного обеспечения. Генератор СНИЛС работает на основе алгоритмов
+          и правил, гарантирующих, что созданный номер будет соответствовать всем необходимым требованиям.
+        </p>
+
+        <h3 class="mt-6 text-xl font-semibold text-slate-900">Алгоритм проверки контрольного числа СНИЛС</h3>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-slate-700">
+          <li>Рассчитать сумму произведений — перемножить первые 9 цифр СНИЛС на коэффициенты 9, 8, 7, 6, 5, 4, 3, 2, 1 (в порядке убывания).</li>
+          <li>
+            Определить контрольное число:
+            <ul class="mt-3 ml-5 list-disc space-y-2 pl-2">
+              <li>Если сумма меньше 100, контрольное число равно самой сумме.</li>
+              <li>Если сумма равна 100 или 101, контрольное число принимается за 00.</li>
+              <li>Если сумма больше 101, вычислить остаток от деления на 101: если остаток равен 100, контрольное число устанавливается в 00, иначе равно остатку.</li>
+            </ul>
+          </li>
+          <li>Сравнить контрольное число с последними двумя цифрами СНИЛС. Если они совпадают — номер считается корректным.</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="mx-auto w-full max-w-6xl px-4 pb-10">
+      <aside aria-label="Баннерный блок">
+        <div id="yandex_rtb_horizontal" class="w-full" style="min-height: 100px;"></div>
+      </aside>
+    </section>
+
+    <section id="faq" class="mx-auto w-full max-w-6xl px-4 pb-16">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold text-slate-900">Часто задаваемые вопросы</h2>
+        <dl class="mt-5 grid gap-4 md:grid-cols-2">
+          <div class="rounded-xl border-l-2 border-brand-500 bg-slate-50 p-4">
+            <dt class="font-semibold text-slate-800">Сколько цифр в номере СНИЛС?</dt>
+            <dd class="mt-2 text-sm leading-6 text-slate-600">СНИЛС состоит из 11 цифр: 9 цифр уникального номера и 2 цифры контрольного числа. Формат записи: XXX-XXX-XXX YY.</dd>
+          </div>
+          <div class="rounded-xl border-l-2 border-brand-500 bg-slate-50 p-4">
+            <dt class="font-semibold text-slate-800">Зачем нужен генератор СНИЛС для тестирования?</dt>
+            <dd class="mt-2 text-sm leading-6 text-slate-600">При разработке и тестировании ПО, работающего с персональными данными, нельзя использовать реальные СНИЛС. Генератор создает номера, которые проходят алгоритмическую валидацию, но не принадлежат реальным людям.</dd>
+          </div>
+          <div class="rounded-xl border-l-2 border-brand-500 bg-slate-50 p-4">
+            <dt class="font-semibold text-slate-800">Может ли сгенерированный СНИЛС совпасть с реальным?</dt>
+            <dd class="mt-2 text-sm leading-6 text-slate-600">Теоретически да - пространство 9-значных номеров ограничено. Но сгенерированный номер не привязан к реальному лицевому счету в СФР, поэтому его использование безопасно в контексте тестирования.</dd>
+          </div>
+          <div class="rounded-xl border-l-2 border-brand-500 bg-slate-50 p-4">
+            <dt class="font-semibold text-slate-800">Меняется ли СНИЛС при смене фамилии?</dt>
+            <dd class="mt-2 text-sm leading-6 text-slate-600">СНИЛС присваивается один раз и не меняется в течение жизни - даже при смене фамилии или утере документа. Меняется только бумажное/электронное уведомление, сам номер остается прежним.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto w-full max-w-6xl px-4 py-6 text-sm text-slate-500">
+      <p>© <span id="year-node">2026</span> Генератор СНИЛС для тестирования.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
