@@ -73,6 +73,7 @@ const env = { ...parseEnvFile(fallbackEnvPath), ...parseEnvFile(envPath) };
 const metricsEnabled = String(env.METRICS_ENABLED || "false").toLowerCase() === "true";
 const metrikaId = String(env.YANDEX_METRIKA_ID || "").trim();
 const siteUrl = normalizeSiteUrl(String(env.SITE_URL || "https://example.com").trim());
+const lastMod = new Date().toISOString().slice(0, 10);
 
 const indexPath = path.join(outputDir, "index.html");
 let indexHtml = fs.readFileSync(indexPath, "utf8");
@@ -86,7 +87,7 @@ indexHtml = indexHtml
 fs.writeFileSync(indexPath, indexHtml, "utf8");
 
 renderTemplate("robots.template.txt", "robots.txt", { SITE_URL: siteUrl });
-renderTemplate("sitemap.template.xml", "sitemap.xml", { SITE_URL: siteUrl });
+renderTemplate("sitemap.template.xml", "sitemap.xml", { SITE_URL: siteUrl, LASTMOD: lastMod });
 fs.copyFileSync(path.join(sourceDir, "favicon.svg"), path.join(outputDir, "favicon.svg"));
 const sourceIcoPath = path.join(sourceDir, "favicon.ico");
 const rootIcoPath = path.join(projectRoot, "favicon.ico");
